@@ -9,6 +9,9 @@ defmodule PayfychallengeWeb.Router do
     pipe_through :api
 
     resources "/users", UsersController
+
+    post "/configusers", ConfigusersController, :create
+    get "/configusers", ConfigusersController, :index
   end
 
   # Enables LiveDashboard only for development

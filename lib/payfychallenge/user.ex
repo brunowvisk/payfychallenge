@@ -14,14 +14,15 @@ defmodule Payfychallenge.User do
         :email
     ]
 
-    @primary_key {:id, :id, autogenerate: true}
+    @primary_key {:id, :binary_id, autogenerate: true}
+
+    @derive {Jason.Encoder, only: [:id, :name, :age, :email]}
 
     schema "users" do
         field :name, :string
         field :age, :integer
         field :email, :string
 
-        @derive {Jason.Encoder, only: [:id, :name, :age, :email]}
     end
 
     def changeset(%{} = params) do

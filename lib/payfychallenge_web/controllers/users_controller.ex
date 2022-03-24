@@ -3,10 +3,11 @@ defmodule PayfychallengeWeb.UsersController do
 
     alias Payfychallenge.User
     alias PayfychallengeWeb.FallbackController
-    alias Payfychallenge.Repo
     alias Payfychallenge.Users.Get
 
-    # action_fallback FallbackController
+    action_fallback FallbackController
+
+    require Logger
 
     def index(conn, _params) do
         case Get.all_users() do
@@ -21,9 +22,9 @@ defmodule PayfychallengeWeb.UsersController do
         end
     end
 
-
     def create(conn, params) do
         with {:ok, %User{} = user} <- Payfychallenge.create_user(params) do
+            Logger.info("User created!")
             conn
             |> put_status(:created)
             |> render("create.json", user: user)

@@ -11,8 +11,8 @@ config :payfychallenge,
   ecto_repos: [Payfychallenge.Repo]
 
 config :payfychallenge, Payfychallenge.Repo,
-  migration_primary_key: [type: :id],
-  migration_foreign_key: [type: :id]
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
 
 # Configures the endpoint
 config :payfychallenge, PayfychallengeWeb.Endpoint,
